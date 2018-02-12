@@ -1,4 +1,4 @@
-# RMS - Record Management System
+# REST API Server
 # Steps to set development environment
 Prequistise:
 - Java (1.8+) (Java 9 has cahnged the version scheme to 9.0 from 1.9, so it runs into issue)
@@ -17,7 +17,7 @@ Prequistise:
 1. Clone the repository
     git clone https://github.com/lalitmcb/rms.git
 2. cd to rms
-    cd rms    
+    cd rms/server   
 3. Run 
     gradle wrapper --gradle-version 4.4.1 
    why wrapper is not checked in. It's a matter of taste
