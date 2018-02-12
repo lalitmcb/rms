@@ -1,0 +1,7 @@
+########################################################
+###                                                   
+###   ${application.title}                           
+###   Version: ${application.formatted-version}
+###   Spring Boot: ${spring-boot.formatted-version}                
+###                                                  
+########################################################
