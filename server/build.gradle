@@ -1,0 +1,86 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven{url 'http://repo.spring.io/milestone'}
+        maven{url 'https://repo.spring.io/libs-milestone'}
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:2.0.0.M7')
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven{url 'http://repo.spring.io/milestone'}
+    maven{url 'https://repo.spring.io/libs-milestone'}
+}
+
+apply plugin:'java'
+apply plugin:'eclipse'
+apply plugin:'org.springframework.boot'
+apply plugin:'io.spring.dependency-management'
+
+sourceCompatibility=1.8
+targetCompatibility=1.8
+
+jar {
+    baseName='rms'
+    version='0.1.0'
+     manifest {
+        attributes('Implementation-Title':baseName,
+                   'Implementation-Version':version)
+    }
+}
+
+bootRun {
+	sourceResources sourceSets.main
+}
+
+sourceSets {
+    testIntegration {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/testIntegration/java')
+        }
+        resources.srcDir file('src/testIntegration/resources')
+    }
+}
+
+configurations {
+    testIntegrationCompile.extendsFrom testCompile
+    testIntegrationRuntime.extendsFrom testRuntime
+}
+
+dependencies {
+    compileOnly('org.projectlombok:lombok:1.16.20')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-devtools')
+    compile('io.jsonwebtoken:jjwt:0.9.0')
+    compile('javax.xml.bind:jaxb-api:2.3.0')
+    compile('org.liquibase:liquibase-core:3.5.3')
+    compile('org.postgresql:postgresql:42.2.0')
+    testCompile('junit:junit')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+task testIntegration(type: Test) {
+    description = 'Runs the integration tests'
+    group = 'verification'
+    testClassesDir = sourceSets.testIntegration.output.classesDir
+    classpath = sourceSets.testIntegration.runtimeClasspath
+}
+
+tasks.withType(Test) {
+    reports.html.destination = file("${reporting.baseDir}/${name}")
+}
+
+check.dependsOn testIntegration
+testIntegration.mustRunAfter test
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.4.1' 
+}
