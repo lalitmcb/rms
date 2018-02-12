@@ -32,7 +32,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		    .and()
 		    .csrf().disable()
 		    .authorizeRequests()
-		  //  .antMatchers(HttpMethod.POST, SecurityConstants.LOGIN_URL).permitAll()
+	//	    .antMatchers(HttpMethod.POST, SecurityConstants.LOGIN_URL).permitAll()
 		    .anyRequest().authenticated()
             .and()
 			.addFilter(new JWTAuthenticaionFilter(authenticationManager()))
