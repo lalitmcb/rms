@@ -29,6 +29,14 @@ Prequistise:
 2. You can create the project for your IDE.
    For eclipse
      ./gradlew eclipse
+ 3. To login do a POST call to
+     http://localhost:8080/login
+     {
+	   "email":"admin@admin.admin.khalibali",
+       "password":"kidnap_president#"
+     }
+     It should return 
+     
      
 # Deployable artifact
 1. Make a jar with emebedded tomcat 
@@ -37,10 +45,14 @@ Prequistise:
      java -jar build/libs/rms-0.1.0.jar
 
 # Debugging
-1.Define GRADLE_OPTS environment variable as per your OS
+1. ./gradlew bootRun --debug-jvm
+   https://tedvinke.wordpress.com/2017/03/22/debugging-grails-3-spring-boot-or-gradle-with-eclipse/
+2.The other options is to define GRADLE_OPTS environment variable as per your OS. (It did not work for 
+  me and I don't know the reason. It should work ideally)
       GRADLE_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5006"
   If you want to debug during application start phase, change suspend to y. This will
   make the application to wait till a debugger is attached.
+
 
 # PostgresQL Notes:
 1. All table names to be lowercase otherwise one has to double quote life long.

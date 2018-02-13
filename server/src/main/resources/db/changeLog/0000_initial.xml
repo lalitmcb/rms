@@ -12,16 +12,19 @@
 				<constraints nullable="false" unique="true" primaryKey="true" />
 			</column>
 			<column name="first_name" type="varchar(50)">
-				<constraints nullable="true" />
+				<constraints nullable="false" />
 			</column>
 			<column name="last_name" type="varchar(50)">
-				<constraints nullable="true" />
+				<constraints nullable="false" />
 			</column>
 			<column name="email" type="varchar(100)">
 				<constraints nullable="false" unique="true" />
 			</column>
 			<column name="password" type="varchar(100)">
-				<constraints nullable="true" />
+				<constraints nullable="false" />
+			</column>
+			<column name="role" type="varchar(10)">
+				<constraints nullable="false" />
 			</column>
 		</createTable>
 		<createSequence sequenceName="groups_sequence" cycle="true"
@@ -40,7 +43,8 @@
 			<column name="first_name" value="Lalit" />
 			<column name="last_name" value="Bhatt" />
 			<column name="email" value="admin@admin.admin.khalibali" />
-			<column name="password" value="sdfsfs" />
+			<column name="password" value="sdfsfs$2y$10$syRom69qJ.Xug2/vTdOMqOFXI7hQprMFTIaSEY2kL7TWu2qhvbEY." />
+			<column name="role" value="Admin" />
 		</insert>
 	</changeSet>
 </databaseChangeLog>

@@ -5,10 +5,9 @@ import java.util.Arrays;
 import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,7 +16,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-@EnableWebSecurity
+@Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Resource
@@ -32,8 +31,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		    .and()
 		    .csrf().disable()
 		    .authorizeRequests()
-	//	    .antMatchers(HttpMethod.POST, SecurityConstants.LOGIN_URL).permitAll()
-		    .anyRequest().authenticated()
+		    .antMatchers("/api/*").authenticated()
             .and()
 			.addFilter(new JWTAuthenticaionFilter(authenticationManager()))
 			.addFilter(new JWTAuthorizationFilter(authenticationManager()))
