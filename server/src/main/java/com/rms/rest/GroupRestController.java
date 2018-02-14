@@ -23,13 +23,7 @@ public class GroupRestController {
 	
 	@RequestMapping(value=GroupRestConstants.GROUP_LIST, method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<GroupVO>> getListOfGroup(){
-		List<GroupVO> gVOList = new ArrayList<>();
-		
-		GroupVO gv1 = new GroupVO();
-		gv1.setId(1L);
-		gv1.setName("Engineering");
-		gVOList.add(gv1);
-		
+		List<GroupVO> gVOList = groupService.getGroupVOList();		
 		return new ResponseEntity<List<GroupVO>>(gVOList, HttpStatus.OK);
 	
 	}

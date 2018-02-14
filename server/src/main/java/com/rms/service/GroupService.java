@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.rms.entity.Group;
 import com.rms.repository.GroupRepository;
+import com.rms.vo.GroupVO;
 
 @Service("groupService")
 public class GroupService {
@@ -15,8 +16,10 @@ public class GroupService {
 	@Resource
 	GroupRepository groupRepository;
 	
-	public List<Group> getListOfGroup(){
-		return groupRepository.findAll();
+	public List<GroupVO> getGroupVOList(){
+		List<Group> groupList = groupRepository.findAll();
+		List<GroupVO> groupVOList = Group.toVOList(groupList);
+		return groupVOList;
 	}
 
 }

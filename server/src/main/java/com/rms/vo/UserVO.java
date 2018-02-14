@@ -1,3 +1,4 @@
+
 package com.rms.vo;
 
 import com.rms.entity.User;
@@ -6,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class UserVO {
-	private int id;
+	private Integer id;
 	private String firstName;
 	private String lastName;
 	private String email;
