@@ -2,16 +2,17 @@
 package com.rms.vo;
 
 import com.rms.entity.User;
+import com.rms.security.Role;
 
 import lombok.Data;
 
 @Data
 public class UserVO {
-	private Integer id;
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String password;
+	private Role role;
 
 	public User toEntity() {
 		User user = new User();
@@ -19,7 +20,7 @@ public class UserVO {
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
 		user.setEmail(email);
-		user.setPassword(password);
+		user.setRole(role);
 		return user;
 	}
 }

@@ -1,6 +1,5 @@
 package com.rms.rest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -21,7 +20,7 @@ public class GroupRestController {
 	@Resource
 	GroupService groupService;
 	
-	@RequestMapping(value=GroupRestConstants.GROUP_LIST, method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value="/group/list", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<GroupVO>> getListOfGroup(){
 		List<GroupVO> gVOList = groupService.getGroupVOList();		
 		return new ResponseEntity<List<GroupVO>>(gVOList, HttpStatus.OK);

@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class BEncryptPasswordEncoderTest {
 
 	/**
-	 * Ensure that the encoder has not changed when we upgarde the versions 
+	 * Ensure that the encoder has not changed when we upgrade the versions 
 	 * of libraries
 	 */
 	@Test

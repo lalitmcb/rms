@@ -1,5 +1,7 @@
 package com.rms.service;
 
+import java.util.UUID;
+
 import javax.annotation.Resource;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,9 +20,11 @@ public class UserService {
 	@Resource
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-	public void createUser(UserVO userVO) {
+	public UserVO createUser(UserVO userVO) {
 		User user = userVO.toEntity();
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		userRepository.save(user);
+		user.setPassword(bCryptPasswordEncoder.encode(UUID.randomUUID().toString()));
+		user = userRepository.save(user);
+		userVO = user.toVO();
+		return userVO;
 	}
 }
