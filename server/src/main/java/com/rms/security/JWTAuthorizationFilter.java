@@ -31,10 +31,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         	response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
-
-        
         UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
-	
         SecurityContextHolder.getContext().setAuthentication(authentication);
         chain.doFilter(request, response);
     }

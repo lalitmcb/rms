@@ -5,10 +5,21 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
 	<changeSet id="0000" author="lalit.bhatt@gmail.com">
-		<createSequence sequenceName="users_sequence" cycle="true"
+		<createSequence sequenceName="audit_seq" cycle="true"
+			incrementBy="1" minValue="1" schemaName="public" startValue="1" />
+		<createTable tableName="audit" remarks="Hibernate envers audit table">
+			<column name="id" type="bigint" defaultValueComputed="nextval('audit_seq')">
+				<constraints nullable="false" unique="true" primaryKey="true" />
+			</column>
+			<column name="timestamp" type="bigint">
+				<constraints nullable="false" />
+			</column>
+			<column name="email" type="varchar(100)"/>
+		</createTable>
+		<createSequence sequenceName="users_seq" cycle="true"
 			incrementBy="1" minValue="1" schemaName="public" startValue="1" />
 		<createTable tableName="users" remarks="User table">
-			<column name="id" type="int4" defaultValueComputed="nextval('users_sequence')">
+			<column name="id" type="bigint" defaultValueComputed="nextval('users_seq')">
 				<constraints nullable="false" unique="true" primaryKey="true" />
 			</column>
 			<column name="first_name" type="varchar(50)">
@@ -27,14 +38,38 @@
 				<constraints nullable="false" />
 			</column>
 		</createTable>
-		<createSequence sequenceName="groups_sequence" cycle="true"
+		<createTable tableName="zzz_users_aud" remarks="User Audit table">
+		    <column name="rev" type="bigint">
+		        <constraints nullable="false" foreignKeyName="fk_users_audit" references="audit(id)"/>
+		    </column>
+		    <column name="revtype" type="smallint" />
+			<column name="id" type="bigint" />
+            <column name="first_name" type="varchar(50)"/>
+            <column name="last_name" type="varchar(50)"/>
+			<column name="email" type="varchar(100)"/>
+			<column name="role" type="varchar(10)"/>
+		</createTable>
+		<createSequence sequenceName="groups_seq" cycle="true"
 			incrementBy="1" minValue="1" schemaName="public" startValue="1" />
 		<createTable tableName="groups" remarks="Group table">
-			<column name="id" type="int4" defaultValueComputed="nextval('groups_sequence')">
+			<column name="id" type="int4" defaultValueComputed="nextval('groups_seq')">
 				<constraints nullable="false" unique="true" primaryKey="true" />
 			</column>
 			<column name="name" type="varchar(100)">
 				<constraints nullable="false" unique="true" />
+			</column>
+		</createTable>
+		<createSequence sequenceName="group_user_seq" cycle="true"
+			incrementBy="1" minValue="1" schemaName="public" startValue="1" />
+		<createTable tableName="group_user" remarks="Group User relationship table">
+			<column name="id" type="int4" defaultValueComputed="nextval('group_user_seq')">
+				<constraints nullable="false" unique="true" primaryKey="true" />
+			</column>
+			<column name="group_id" type="int4">
+				 <constraints nullable="false" foreignKeyName="fk_group_user__groups" references="groups(id)"/>
+			</column>
+			<column name="user_id" type="bigint">
+				 <constraints nullable="false" foreignKeyName="fk_group_user__users" references="users(id)"/>
 			</column>
 		</createTable>
 	</changeSet>
@@ -43,7 +78,7 @@
 			<column name="first_name" value="Lalit" />
 			<column name="last_name" value="Bhatt" />
 			<column name="email" value="admin@admin.admin.khalibali" />
-			<column name="password" value="sdfsfs$2y$10$syRom69qJ.Xug2/vTdOMqOFXI7hQprMFTIaSEY2kL7TWu2qhvbEY." />
+			<column name="password" value="$2a$10$878AEpyzAIo4VNmMvAywjeY2JbkNyT.m4XE9WDVSnNX9FVRpFlKwq" />
 			<column name="role" value="Admin" />
 		</insert>
 	</changeSet>
