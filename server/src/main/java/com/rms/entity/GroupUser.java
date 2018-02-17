@@ -20,7 +20,7 @@ public class GroupUser {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "group_user_sequence")
 	@SequenceGenerator(name="group_user_sequence", sequenceName = "group_user_seq", allocationSize=50)
 	@Column(name = "id", updatable = false, nullable = false)
-	private Integer id;
+	private Long id;
 	
 	@ManyToOne
 	private Group group;
