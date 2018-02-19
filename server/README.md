@@ -6,7 +6,7 @@ Prequistise:
 - PostgresQL 10+ : (Create the following)
     Development:
      CREATE DATABASE rms;
-     CREATE USER rms WITH PASSWORD rms123@;
+     CREATE USER rms WITH PASSWORD 'rms123@';
      GRANT ALL PRIVILEGES ON DATABASE rms to rms;
     Integration Testing:
      CREATE DATABASE rms_test;
@@ -24,11 +24,11 @@ Prequistise:
     https://stackoverflow.com/questions/20348451/why-should-the-gradle-wrapper-be-committed-to-vcs
     
 # Continuous development
-1. To run the application 
-     ./gradlew bootRun
-2. You can create the project for your IDE.
+ 1. You can create the project for your IDE.
    For eclipse
      ./gradlew eclipse
+ 2. To run the application 
+     ./gradlew bootRun
  3. To login do a POST call to
      http://localhost:8080/login
      {
