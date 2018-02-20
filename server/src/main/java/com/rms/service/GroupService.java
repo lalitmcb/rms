@@ -18,8 +18,7 @@ public class GroupService {
 	
 	public List<GroupVO> getGroupVOList(){
 		List<Group> groupList = groupRepository.findAll();
-		List<GroupVO> groupVOList = Group.toVOList(groupList);
-		return groupVOList;
+		return Group.toVOList(groupList);
 	}
 
 }

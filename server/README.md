@@ -12,7 +12,10 @@ Prequistise:
      CREATE DATABASE rms_test;  
      CREATE USER rms_test WITH PASSWORD rms_test;  
      GRANT ALL PRIVILEGES ON DATABASE rms to rms_test;  
-- Install lombok.jar to support auto getters and setters in your IDE  
+- Eclipse IDE (Similar things can be applied to other IDE)   
+     - Install lombok.jar to support auto getters and setters in your IDE  
+     - Install Sonar Lint plugin to maintain quality checks in IDE  
+- Tool similar to Postman which can help in doing Rest API calls  
     
 1. Clone the repository  
     git clone https://github.com/lalitmcb/rms.git  

@@ -79,7 +79,7 @@
 			<column name="last_name" value="Bhatt" />
 			<column name="email" value="admin@admin.admin.khalibali" />
 			<column name="password" value="$2a$10$878AEpyzAIo4VNmMvAywjeY2JbkNyT.m4XE9WDVSnNX9FVRpFlKwq" />
-			<column name="role" value="Admin" />
+			<column name="role" value="ADMIN" />
 		</insert>
 	</changeSet>
 </databaseChangeLog>
