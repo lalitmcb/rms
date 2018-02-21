@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,13 @@ public class GroupRestController {
 	public ResponseEntity<List<GroupVO>> getListOfGroup(){
 		List<GroupVO> gVOList = groupService.getGroupVOList();		
 		return new ResponseEntity<>(gVOList, HttpStatus.OK);
+	
+	}
+	
+	@RequestMapping(value="/group", method = RequestMethod.POST, produces = "application/json")
+	public ResponseEntity<GroupVO> getListOfGroup(@RequestBody final GroupVO groupVO){
+		GroupVO persistedGroupVO = groupService.createGroup(groupVO);	
+		return new ResponseEntity<>(persistedGroupVO, HttpStatus.OK);
 	
 	}
 }

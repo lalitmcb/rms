@@ -20,5 +20,12 @@ public class GroupService {
 		List<Group> groupList = groupRepository.findAll();
 		return Group.toVOList(groupList);
 	}
+	
+	public GroupVO createGroup(GroupVO groupVO) {
+		Group group = groupVO.toEntity();
+		group = groupRepository.save(group);
+		groupVO = group.toVO();
+		return groupVO;
+	}
 
 }
