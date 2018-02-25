@@ -27,7 +27,7 @@ public class Group implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groups_sequence")
 	@SequenceGenerator(name="groups_sequence", sequenceName = "groups_seq", allocationSize=50)
 	@Column(name = "id", updatable = false, nullable = false)
-	private Integer id;
+	private Long id;
 	
 	@Column(name="name")
 	private String name;

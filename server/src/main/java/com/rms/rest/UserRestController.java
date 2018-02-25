@@ -19,10 +19,10 @@ public class UserRestController {
 	@Resource
 	UserService userService;
 	
-	@RequestMapping(value="/user/create", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value="/user", method = RequestMethod.POST, produces = "application/json")
 	public ResponseEntity<UserVO> getListOfGroup(@RequestBody final UserVO userVO){
 		UserVO persistedUserVO = userService.createUser(userVO);	
-		return new ResponseEntity<UserVO>(persistedUserVO, HttpStatus.OK);
+		return new ResponseEntity<>(persistedUserVO, HttpStatus.OK);
 	
 	}
 	
