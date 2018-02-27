@@ -71,6 +71,11 @@ The home page of these frameworks are always the first good place to start.
   
 LetsEncrpt  
 SSL using letsencrypt - https://dzone.com/articles/spring-boot-secured-by-lets-encrypt  
+
+SpringFox 
+This is used for Swagger documentation for Rest API. However SpringFox has an issue related 
+to RequestParam. This is the reason to use APIImplicitParam
+https://stackoverflow.com/questions/35404329/swagger-documentation-for-spring-pageable-interface
   
 Spring Security  
 https://auth0.com/blog/implementing-jwt-authentication-on-spring-boot/  
