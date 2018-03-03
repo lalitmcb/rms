@@ -16,14 +16,16 @@ import lombok.Data;
 @Table(name = "groups")
 @Data
 public class Group implements Serializable {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groups_sequence")
-	@SequenceGenerator(name="groups_sequence", sequenceName = "groups_sequence", allocationSize=50)
+	@SequenceGenerator(name = "groups_sequence", sequenceName = "groups_seq", allocationSize = 50)
 	@Column(name = "id", updatable = false, nullable = false)
-	private Integer id;
-	
-	@Column(name="name")
+	private Long id;
+
+	@Column(name = "name")
 	private String name;
-	
+
 }
