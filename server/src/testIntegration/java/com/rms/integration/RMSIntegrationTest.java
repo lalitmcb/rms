@@ -83,7 +83,4 @@ public class RMSIntegrationTest{
 		assertThat( response.getStatusCode() , equalTo(HttpStatus.OK));
 		
 	}
-
-
-
 }
