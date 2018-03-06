@@ -69,6 +69,9 @@ frugal. (Please pardon me for the same.)
 Also I have not put the links which are very obvious. Like Spring framework project or gradle project.
 The home page of these frameworks are always the first good place to start.  
   
+Spring io dependency management POM
+https://github.com/spring-io/platform/blob/master/platform-bom/pom.xml
+
 LetsEncrpt  
 SSL using letsencrypt - https://dzone.com/articles/spring-boot-secured-by-lets-encrypt  
 
