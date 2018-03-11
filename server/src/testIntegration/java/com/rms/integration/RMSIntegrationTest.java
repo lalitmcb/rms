@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 
 import java.util.Collections;
 
+import org.hamcrest.core.IsNull;
 import org.jboss.logging.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -81,6 +82,8 @@ public class RMSIntegrationTest{
 		loginVO.setPassword("kidnap_president#");
 		ResponseEntity<String> response = loginRestControllerTemplate.login(loginVO);
 		assertThat( response.getStatusCode() , equalTo(HttpStatus.OK));
+		String authorization = response.getHeaders().get("RMS-Authorization").get(0);
+		assertThat(authorization, IsNull.notNullValue());
 		
 	}
 }
