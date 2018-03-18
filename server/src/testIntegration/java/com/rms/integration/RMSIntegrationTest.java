@@ -77,10 +77,8 @@ public class RMSIntegrationTest{
 		*/
 		
 		//Check for authorized access
-		LoginVO loginVO = new LoginVO();
-		loginVO.setEmail("admin@admin.admin.khalibali");
-		loginVO.setPassword("kidnap_president#");
-		ResponseEntity<String> response = loginRestControllerTemplate.login(loginVO);
+		String loginJson = "{'email':'admin@admin.admin.khalibali','password':'kidnap_president#'}";
+		ResponseEntity<String> response = loginRestControllerTemplate.login(loginJson);
 		assertThat( response.getStatusCode() , equalTo(HttpStatus.OK));
 		String authorization = response.getHeaders().get("RMS-Authorization").get(0);
 		assertThat(authorization, IsNull.notNullValue());
