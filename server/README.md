@@ -2,7 +2,7 @@
 # Steps to set development environment
 Prequistise:
 - Java (1.8+) (Java 9 has cahnged the version scheme to 9.0 from 1.9, so it runs into issue)
-- gradle - 4.4.1
+- gradle - 4.6
 - PostgresQL 10+ : (Create the following)
     Development:  
      CREATE DATABASE rms;  
@@ -22,7 +22,7 @@ Prequistise:
 2. cd to rms  
     cd rms/server     
 3. Run  
-    gradle wrapper --gradle-version 4.4.1  
+    gradle wrapper --gradle-version 4.6  
    why wrapper is not checked in. It's a matter of taste  
     https://stackoverflow.com/questions/20348451/why-should-the-gradle-wrapper-be-committed-to-vcs  
     

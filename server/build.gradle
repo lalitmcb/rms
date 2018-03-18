@@ -25,8 +25,8 @@ targetCompatibility=1.8
 
 jar {
     baseName='rms'
-    version='${git.describe()}' 
-     manifest {
+    version='0.1.0' 
+    manifest {
         attributes('Implementation-Title':baseName,
                    'Implementation-Version':version)
     }
