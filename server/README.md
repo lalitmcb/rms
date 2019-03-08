@@ -1,8 +1,8 @@
 # REST API Server
 # Steps to set development environment
 Prequistise:
-- Java (1.8+) (Java 9 has cahnged the version scheme to 9.0 from 1.9, so it runs into issue)
-- gradle - 4.6
+- Java (10+) 
+- gradle - 5.0+
 - PostgresQL 10+ : (Create the following)
     Development:  
      CREATE DATABASE rms;  
@@ -10,7 +10,7 @@ Prequistise:
      GRANT ALL PRIVILEGES ON DATABASE rms to rms;    
     Integration Testing:  
      CREATE DATABASE rms_test;  
-     CREATE USER rms_test WITH PASSWORD rms_test;  
+     CREATE USER rms_test WITH PASSWORD 'rms_test';  
      GRANT ALL PRIVILEGES ON DATABASE rms to rms_test;  
 - Eclipse IDE (Similar things can be applied to other IDE)   
      - Install lombok.jar to support auto getters and setters in your IDE  
@@ -22,7 +22,7 @@ Prequistise:
 2. cd to rms  
     cd rms/server     
 3. Run  
-    gradle wrapper --gradle-version 4.6  
+    gradle wrapper --gradle-version 5.0
    why wrapper is not checked in. It's a matter of taste  
     https://stackoverflow.com/questions/20348451/why-should-the-gradle-wrapper-be-committed-to-vcs  
     

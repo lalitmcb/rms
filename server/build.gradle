@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath('org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RELEASE')
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:2.1.1.RELEASE')
     }
 }
 
@@ -16,23 +16,25 @@ apply plugin:'eclipse'
 apply plugin:'org.springframework.boot'
 apply plugin:'io.spring.dependency-management'
 
-sourceCompatibility=1.8
-targetCompatibility=1.8
+sourceCompatibility=JavaVersion.VERSION_1_10
+targetCompatibility=JavaVersion.VERSION_1_10
 
 dependencies {
-    compileOnly('org.projectlombok:lombok:1.16.20')
+    compileOnly('org.projectlombok:lombok:1.18.4')
+    annotationProcessor 'org.projectlombok:lombok:1.18.4'
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-devtools')
-    compile('io.jsonwebtoken:jjwt:0.9.0')
-    compile('javax.xml.bind:jaxb-api:2.3.0')
+    compile('io.jsonwebtoken:jjwt:0.9.1')
+    compile('javax.xml.bind:jaxb-api:2.4.0-b180830.0359')
+    compile('org.glassfish.jaxb:jaxb-runtime:2.3.0')
     compile('org.hibernate:hibernate-envers')
     compile('org.liquibase:liquibase-core')
     compile('org.postgresql:postgresql')
-    compile('io.springfox:springfox-swagger2:2.7.0')
-    compile('io.springfox:springfox-swagger-ui:2.7.0')
+    compile('io.springfox:springfox-swagger2:2.9.2')
+    compile('io.springfox:springfox-swagger-ui:2.9.2')
     testCompile('junit:junit')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
@@ -59,7 +61,7 @@ bootRun {
 
 
 bootJar {
-    baseName='rms'
+    baseName='server'
     version= 'git describe'.execute().text.trim()
     manifest {
         attributes('Implementation-Title':baseName,
@@ -70,8 +72,9 @@ bootJar {
 task testIntegration(type: Test) {
     description = 'Runs the integration tests'
     group = 'verification'
-    testClassesDir = sourceSets.testIntegration.output.classesDir
+    testClassesDirs = sourceSets.testIntegration.output.classesDirs
     classpath = sourceSets.testIntegration.runtimeClasspath
+    mustRunAfter test
 }
 
 tasks.withType(Test) {
@@ -79,8 +82,8 @@ tasks.withType(Test) {
 }
 
 check.dependsOn testIntegration
-testIntegration.mustRunAfter test
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.4.1' 
+wrapper {
+    gradleVersion = '5.0' 
 }
+
