@@ -49,7 +49,12 @@ public class JWTAuthenticaionFilter extends UsernamePasswordAuthenticationFilter
 				                     .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
 				                     .signWith(SignatureAlgorithm.HS512, SecurityConstants.SECRET.getBytes())
 				                     .compact();
-		response.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
+               	String tokenData = "{\""  + SecurityConstants.HEADER_STRING + "\":\"" + SecurityConstants.TOKEN_PREFIX + token + "\"}";
+		response.setStatus(HttpServletResponse.SC_OK);
+		response.getWriter().write(tokenData);
+		response.getWriter().flush();
+		response.getWriter().close();
+		//response.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
 	}
 
 }
