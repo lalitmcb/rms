@@ -6,7 +6,13 @@ const ACCESS_TOKEN = "access-token";
 export default class StorageSerivce {
 
     static async getAccessToken() {
-        return await ls.get(ACCESS_TOKEN);
+    let token = null;
+        try{
+            token = await ls.get(ACCESS_TOKEN);
+        }catch(error){
+
+        }
+       return token;            
     }
 
     static async setAccessToken(accessToken) {
