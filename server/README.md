@@ -35,7 +35,7 @@ Prequistise:
  3. To login do a POST call to  
      http://localhost:8080/login  
      {  
-	   "email":"admin@admin.admin.khalibali",  
+	   "email":"admin@abc.xyz",
        "password":"kidnap_president#"  
      }  
      It should return   

@@ -77,7 +77,7 @@
 		<insert tableName="users ">
 			<column name="first_name" value="Lalit" />
 			<column name="last_name" value="Bhatt" />
-			<column name="email" value="admin@admin.admin.khalibali" />
+			<column name="email" value="admin@abc.xyz" />
 			<column name="password" value="$2a$10$878AEpyzAIo4VNmMvAywjeY2JbkNyT.m4XE9WDVSnNX9FVRpFlKwq" />
 			<column name="role" value="ADMIN" />
 		</insert>
