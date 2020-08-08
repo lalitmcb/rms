@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rms.service.UserService;
+import com.rms.vo.NewUserVO;
 import com.rms.vo.UserVO;
 
 @RestController
-@RequestMapping(value=RestConstants.API)
-public class UserRestController {
+public class SignUpRestController {
 
 	@Resource
 	UserService userService;
 	
-	@RequestMapping(value="/user", method = RequestMethod.POST, produces = "application/json")
-	public ResponseEntity<UserVO> getListOfGroup(@RequestBody final UserVO userVO){
-		UserVO persistedUserVO = userService.createUser(userVO);	
+	@RequestMapping(value="/signUp", method = RequestMethod.POST, produces = "application/json")
+	public ResponseEntity<UserVO> createUser(@RequestBody final NewUserVO newUserVO){
+		UserVO persistedUserVO = userService.createUser(newUserVO);	
 		return new ResponseEntity<>(persistedUserVO, HttpStatus.OK);
 	
 	}

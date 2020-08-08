@@ -13,9 +13,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
+import com.sun.istack.logging.Logger;
+
 import io.jsonwebtoken.Jwts;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
+	
+	private static final Logger log = Logger.getLogger(JWTAuthorizationFilter.class);
 
     public JWTAuthorizationFilter(AuthenticationManager authManager) {
         super(authManager);
@@ -25,15 +29,22 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain chain) throws IOException, ServletException {
-        String header = request.getHeader(SecurityConstants.HEADER_STRING);
+    	log.info("Url hit: " + request.getRequestURL());
+    	
+    	if(!request.getRequestURI().equalsIgnoreCase("/signUp")) {
+			String header = request.getHeader(SecurityConstants.HEADER_STRING);
 
-        if (header == null || !header.startsWith(SecurityConstants.TOKEN_PREFIX)) {
-        	response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            return;
-        }
-        UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        chain.doFilter(request, response);
+			if (header == null || !header.startsWith(SecurityConstants.TOKEN_PREFIX)) {
+				response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+				return;
+			}
+			UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
+			SecurityContextHolder.getContext().setAuthentication(authentication);
+			chain.doFilter(request, response);
+    	}
+    	else {
+    		chain.doFilter(request, response);
+    	}
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {

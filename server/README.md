@@ -40,6 +40,23 @@ Prequistise:
      }  
      It should return   
      
+ 4. There is a http://localhost:8080/signUp which can be called annonymously using POST
+      {
+      "firstName":"Lalit",
+      "lastName" : "Bhatt",
+      "email" : "a@a.com",
+      "password" : "a",
+      "role": "USER"
+      }
+      
+     If successful it will return:
+      {
+      "firstName":"Lalit",
+      "lastName" : "Bhatt",
+      "email" : "a@a.com",
+      "role": "USER"
+      }
+      
      
 # Deployable artifact  
 1. Make a jar with emebedded tomcat   
