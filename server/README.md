@@ -56,7 +56,33 @@ Prequistise:
       "email" : "a@a.com",
       "role": "USER"
       }
-      
+
+ 5.  Now with the newly created user, we can create a group which is an authenticated request
+     For that do the following:
+     a. Login with the newly created user 
+        POST -> http://localhost:8080/login  
+        {  
+	      "email":"a@a.com",
+          "password":"a"  
+        } 
+      b. The above call if successful will return a authorization token in the form
+         {"RMSAuthorization":"Bearer IjoxNTk3NzUzNTE2fQ"}
+      c. Now to create the group 
+         - POST -> http://localhost:8080/api/group
+         - Add in header of the request the following key value pair which is returned from the 
+           successful authentication. The value will be much longer. For document purpose I have 
+           truncated it here
+           key: RMSAuthorization
+           value: Bearer IjoxNTk3NzUzNTE2fQ 
+         - Request body
+           {
+            "name": "First Group"
+           }
+         - on success it will return the group details with id
+           {
+             "id": 1,
+             "name": "First Group"
+           }
      
 # Deployable artifact  
 1. Make a jar with emebedded tomcat   

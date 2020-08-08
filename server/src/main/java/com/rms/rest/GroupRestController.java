@@ -39,7 +39,7 @@ public class GroupRestController {
 	}
 
 	@RequestMapping(value="/group", method = RequestMethod.POST, produces = "application/json")
-	public ResponseEntity<GroupVO> getListOfGroup(@RequestBody final GroupVO groupVO){
+	public ResponseEntity<GroupVO> createGroup(@RequestBody final GroupVO groupVO){
 		GroupVO persistedGroupVO = groupService.createGroup(groupVO);	
 		return new ResponseEntity<>(persistedGroupVO, HttpStatus.OK);
 	
