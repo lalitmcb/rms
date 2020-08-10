@@ -23,7 +23,7 @@ public class Audit implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "audit_sequence")
-	@SequenceGenerator(name = "audit_sequence", sequenceName = "audit_seq", allocationSize = 50)
+	@SequenceGenerator(name = "audit_sequence", sequenceName = "audit_seq")
 	@Column(name = "id", updatable = false, nullable = false)
 	@RevisionNumber
 	private Long id;

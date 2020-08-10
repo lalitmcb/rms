@@ -19,7 +19,7 @@ public class GroupUser {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "group_user_sequence")
-	@SequenceGenerator(name="group_user_sequence", sequenceName = "group_user_seq", allocationSize=50)
+	@SequenceGenerator(name="group_user_sequence", sequenceName = "group_user_seq")
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 	

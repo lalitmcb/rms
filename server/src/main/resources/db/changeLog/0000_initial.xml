@@ -17,7 +17,7 @@
 			<column name="email" type="varchar(100)"/>
 		</createTable>
 		<createSequence sequenceName="users_seq" cycle="true"
-			incrementBy="1" minValue="1" schemaName="public" startValue="1" />
+			incrementBy="1" minValue="1" startValue="1" />
 		<createTable tableName="users" remarks="User table">
 			<column name="id" type="bigint" defaultValueComputed="nextval('users_seq')">
 				<constraints nullable="false" unique="true" primaryKey="true" />
@@ -81,5 +81,6 @@
 			<column name="password" value="$2a$10$878AEpyzAIo4VNmMvAywjeY2JbkNyT.m4XE9WDVSnNX9FVRpFlKwq" />
 			<column name="role" value="ADMIN" />
 		</insert>
+		<sql dbms="postgresql">select setval('users_seq', (select max(id)+1 from users), false)</sql>
 	</changeSet>
 </databaseChangeLog>
