@@ -29,7 +29,7 @@ public class RMSMain {
 	    final CorsConfiguration config = new CorsConfiguration();
 	    config.setAllowCredentials(true);
 	    config.setAllowedOrigins(Collections.singletonList("*"));
-	    config.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept"));
+	    config.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept", "RMSAuthorization"));
 	    config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"));
 	    source.registerCorsConfiguration("/**", config);
 	    return new CorsFilter(source);

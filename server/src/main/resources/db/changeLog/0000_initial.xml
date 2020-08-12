@@ -81,6 +81,5 @@
 			<column name="password" value="$2a$10$878AEpyzAIo4VNmMvAywjeY2JbkNyT.m4XE9WDVSnNX9FVRpFlKwq" />
 			<column name="role" value="ADMIN" />
 		</insert>
-		<sql dbms="postgresql">select setval('users_seq', (select max(id)+1 from users), false)</sql>
 	</changeSet>
 </databaseChangeLog>
